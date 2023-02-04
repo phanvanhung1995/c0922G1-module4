@@ -9,38 +9,44 @@
 <h2>List Products</h2>
 <p th:text="${mess}"></p>
 <p>
-  <a th:href="@{/create}">Create new product</a>
+    <a th:href="@{/create}">Create new product</a>
 </p>
+
+<form th:action="@{/search}" method="get">
+    <input type="text" name="name" placeholder="Nhập tên muốn tìm : ">
+    <button type="submit">Search</button>
+</form>
+
 <table border="1">
-  <tr>
-    <th>ID</th>
-    <th>NAME</th>
-    <th>PRICE</th>
-    <th>DESCRIPTION</th>
-    <th>BRAND</th>
-    <th>EDIT</th>
-    <th>DELETE</th>
-    <th>VIEW</th>
-  </tr>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>DESCRIPTION</th>
+        <th>BRAND</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+        <th>VIEW</th>
+    </tr>
 
-  <tr th:each="product:${products}">
-    <td th:text="${product.id}"></td>
-    <td th:text="${product.name}"></td>
-    <td th:text="${product.price}"></td>
-    <td th:text="${product.description}"></td>
-    <td th:text="${product.brand}"></td>
-    <td>
-      <a th:href="@{/edit/__${product.id}__}">Edit</a>
-    </td>
-    <td>
-      <a th:href="@{/delete/__${product.id}__}">Delete</a>
-    </td>
+    <tr th:each="product:${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.brand}"></td>
+        <td>
+            <a th:href="@{/edit/__${product.id}__}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/delete/__${product.id}__}">Delete</a>
+        </td>
 
-    <td>
-      <a th:href="@{/view/__${product.id}__}">View</a>
-    </td>
+        <td>
+            <a th:href="@{/view/__${product.id}__}">View</a>
+        </td>
 
-  </tr>
+    </tr>
 </table>
 </body>
 </html>

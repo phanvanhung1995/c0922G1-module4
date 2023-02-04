@@ -17,22 +17,23 @@ public class CalculatorController {
 
     @PostMapping("/save")
     public String calculator(@RequestParam double number1,@RequestParam double number2,@RequestParam String action ,Model model) {
-        double number = 0;
+        String number ;
         switch (action) {
             case "+":
-                number = number1 + number2;
+                number = String.valueOf(number1 + number2);
                 break;
             case "-":
-                number = number1 - number2;
+                number = String.valueOf(number1 - number2);
                 break;
             case "*":
-                number = number1 * number2;
+                number = String.valueOf(number1 * number2);
                 break;
-            case "/":
+            default:
                 if (number2==0) {
-                    return "lỗi";
+                    number = "lỗi không chia cho 0" ;
+                    break;
                 }
-                number = number1 / number2;
+                number = String.valueOf(number1 / number2);
                 break;
         }
         model.addAttribute("number",number );

@@ -9,8 +9,8 @@
 <h2>Calculator </h2>
 
 <form action="save" method="post">
-    <input name="number1" value="number1">
-    <input name="number2" value="number2"><br>
+    <input name="number1" >
+    <input name="number2" ><br>
     <button type="submit" name="action" value="+">Addition</button>
     <button type="submit" name="action" value="-">Subtraction</button>
     <button type="submit" name="action" value="*">Multiplication</button>

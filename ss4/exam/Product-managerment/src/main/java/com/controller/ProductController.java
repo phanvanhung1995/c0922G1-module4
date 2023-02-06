@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 @Controller
 public class ProductController {
     @Autowired
@@ -33,40 +35,46 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public String create(Product product ) {
+    public String create(Product product) {
         productService.create(product);
         return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable int id,Model model) {
+    public String edit(@PathVariable int id, Model model) {
         Product product = productService.findById(id);
-        model.addAttribute("product",product);
+        if (product == null) {
+            model.addAttribute("mess", "không tìm thấy sản phẩm");
+        }
+        model.addAttribute("product", product);
         return "/edit";
     }
 
     @PostMapping("/update")
     public String update(Product product) {
-        productService.edit(product.getId(),product);
+        productService.edit(product);
         return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id, RedirectAttributes redirect) {
         productService.delete(id);
-        redirect.addFlashAttribute("mess","xóa thành công");
+        redirect.addFlashAttribute("mess", "xóa thành công");
         return "redirect:/";
     }
 
     @GetMapping("/view/{id}")
-    public String showProduct(@PathVariable int id,Model model) {
-        model.addAttribute("product",productService.findById(id));
+    public String showProduct(@PathVariable int id, Model model) {
+        model.addAttribute("product", productService.findById(id));
         return "/view";
     }
 
     @GetMapping("/search")
     public String showListProductSearch(@RequestParam String name, Model model) {
-        model.addAttribute("products",productService.search(name));
+        model.addAttribute("products", productService.search(name));
+        if (productService.search(name) == null) {
+            model.addAttribute("mess", "không có sản phẩm nào cùng tên");
+        }
         return "/list";
     }
 }

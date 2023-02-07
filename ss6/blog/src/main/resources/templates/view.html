@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en"><html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View product </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="/layout::nav">
+</div>
+<p>
+    <a th:href="@{/}">Back to list product</a>
+</p>
+<label>Id : </label>
+<label th:text="*{blog.id}"></label><br>
+
+<label>Name : </label>
+<label th:text="*{blog.name}"></label><br>
+
+<label>content : </label>
+<label th:text="*{blog.content}"></label><br>
+
+<label> time up : </label>
+<label th:text="*{blog.timeUp}"></label><br>
+
+</body>
+</html>

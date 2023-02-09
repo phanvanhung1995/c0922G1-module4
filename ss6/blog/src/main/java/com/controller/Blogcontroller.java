@@ -5,24 +5,50 @@ import com.service.BlogService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
 public class Blogcontroller {
     @Autowired
-    BlogService blogService;
+   private BlogService blogService;
+
+//    @GetMapping("/")
+//    public String showList(Model model) {
+//        List<Blog> blog = blogService.findAll();
+//        model.addAttribute("blogList", blog);
+//        return "/list";
+//    }
+
+
+//    @GetMapping("/")
+//    public String showList(Model model,
+//                           @PageableDefault(size = 2,page = 0,sort = "name",direction = Sort.Direction.ASC) Pageable pageable) {
+//        Page<Blog> blogPage = blogService.findAll(pageable);
+//        model.addAttribute("blogPage", blogPage);
+//        return "/list";
+//    }
 
     @GetMapping("/")
-    public String showList(Model model) {
-        List<Blog> blog = blogService.findAll();
-        model.addAttribute("blogList", blog);
+    public String showList(Model model,@RequestParam(required = false,defaultValue ="") String nameSearch,
+                           @PageableDefault(size = 2,page = 0,sort = "name",direction = Sort.Direction.ASC) Pageable pageable) {
+        Page<Blog> blogPage = blogService.findByNameContaining(nameSearch,pageable);
+        model.addAttribute("blogPage", blogPage);
+        model.addAttribute("nameSearch", nameSearch);
         return "/list";
     }
 
@@ -67,5 +93,4 @@ public class Blogcontroller {
         model.addAttribute("blog", blogService.findById(id));
         return "/view";
     }
-
 }

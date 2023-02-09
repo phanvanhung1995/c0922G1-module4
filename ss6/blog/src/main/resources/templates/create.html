@@ -14,8 +14,8 @@
 </p>
 
 <form th:action="@{/save}" method="post" th:object="${blog}">
-    <label>Id  : </label>
-    <input th:field="*{id}"><br>
+<!--    <label>Id  : </label>-->
+    <input hidden th:field="*{id}"><br>
 
     <label>Name  : </label>
     <input th:field="*{name}"><br>

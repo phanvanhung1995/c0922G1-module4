@@ -4,49 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <title>List Blog</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
 <div th:replace="/layout::nav">
 </div>
 <body>
-<h2>List Products</h2>
+
 <p style="color: white" th:text="${mess}"></p>
+
 <p>
     <button class="btn btn-primary btn-lg">
-    <a style="color: red" th:href="@{/create}">Create new Blog</a>
+        <a style="color: white; text-decoration: none" th:href="@{/create}">Create new Blog</a>
     </button>
 </p>
+<h2 style="color: red;font-size: 50px;background-color: lightgray;text-align: center">List Blog</h2>
 
+<!--sắp xếp-->
+<form th:action="@{/sort}">
+<select name="sort">
+    <option value="id">Id</option>
+    <option value="name">Name</option>
+</select>
+    <input value="sort" type="submit">
+</form>
+
+<!--tìm kiếm theo ten-->
+<form action="/">
+    <input th:name="nameSearch" placeholder="nhập tên muốn tìm : " th:value="${nameSearch}">
+    <button>Search</button>
+</form>
 <table class="table table-striped">
     <tr>
         <th>ID</th>
         <th>NAME</th>
+        <th>CATEGORY</th>
         <th>CONTENT</th>
         <th>TIME UP</th>
         <th>EDIT</th>
         <th>DELETE</th>
         <th>VIEW</th>
     </tr>
+    <tr>
+        <td th:colspan="7" th:if="${blogPage.isEmpty()}">
+            <p >Danh sách trống</p>
+        </td>
+    </tr>
 
-    <tr th:each="blog:${blogList}">
+    <tr th:each="blog:${blogPage}">
         <td th:text="${blog.id}"></td>
         <td th:text="${blog.name}"></td>
         <td th:text="${blog.content}"></td>
         <td th:text="${blog.timeUp}"></td>
         <td>
-            <a th:href="@{/edit/__${blog.id}__}">Edit</a>
+            <button class="btn btn-outline-primary">
+                <a style="color: red; text-decoration: none" th:href="@{/edit/__${blog.id}__}">Edit</a>
+            </button>
         </td>
         <td>
-            <a th:href="@{/delete/__${blog.id}__}">Delete</a>
+            <button class="btn btn-outline-primary ">
+                <a style="color: red; text-decoration: none" th:href="@{/delete/__${blog.id}__}">Delete</a>
+            </button>
         </td>
 
         <td>
-            <a th:href="@{/view/__${blog.id}__}">View</a>
+            <button class="btn btn-outline-primary">
+                <a style="color: red; text-decoration: none" th:href="@{/view/__${blog.id}__}">View</a>
+            </button>
         </td>
     </tr>
 </table>
+
+<!--phân trang-->
+<div>
+    <a th:href="@{/(page=${blogPage.number - 1},nameSearch = ${nameSearch})}"  th:if="${blogPage.hasPrevious()}">Trước</a>
+    <span th:text="${blogPage.number + 1 }">/<span th:text="${blogPage.totalPages}"></span></span>
+    <a th:href="@{/(page=${blogPage.number + 1},nameSearch = ${nameSearch})}" th:if="${blogPage.hasNext()}">sau</a>
+</div>
+
+
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 
 </html>

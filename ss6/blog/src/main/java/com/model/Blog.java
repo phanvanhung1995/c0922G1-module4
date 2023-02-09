@@ -1,9 +1,6 @@
 package com.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -13,15 +10,19 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
     private String content;
     private String timeUp;
 
     public Blog() {
     }
 
-    public Blog(int id, String name, String content, String timeUp) {
+    public Blog(int id, String name, Category category, String content, String timeUp) {
         this.id = id;
         this.name = name;
+        this.category = category;
         this.content = content;
         this.timeUp = timeUp;
     }
@@ -56,5 +57,13 @@ public class Blog {
 
     public void setTimeUp(String timeUp) {
         this.timeUp = timeUp;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

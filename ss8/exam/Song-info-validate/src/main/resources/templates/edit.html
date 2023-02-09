@@ -16,7 +16,7 @@
     <a th:href="@{/}">Back to list Song</a>
 </p>
 <form th:action="@{/edit}" th:object="${song}" method="post">
-    <input th:field="*{id}" th:value="*{id}">
+    <input hidden th:field="*{id}" th:value="*{id}">
     <label>Name : </label>
     <input th:field="*{name}" th:value="*{name}"><br>
 

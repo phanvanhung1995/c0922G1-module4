@@ -19,11 +19,14 @@
 <form th:action="@{/save}" th:object="${song}" method="post">
     <input th:field="*{id}" th:value="*{id}" hidden>
     <label>Name Song : </label>
-    <input th:field="*{name}"><br>
+    <input th:field="*{name}">
+    <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label><br>
     <label>Singer : </label>
-    <input th:field="*{singer}"><br>
+    <input th:field="*{singer}">
+    <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label><br>
     <label> Kind Of Music: </label>
-    <input th:field="*{kindOfMusic}"><br>
+    <input th:field="*{kindOfMusic}">
+    <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label><br>
     <button>Save</button>
 </form>
 </body>

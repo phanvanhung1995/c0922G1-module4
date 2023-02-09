@@ -22,7 +22,7 @@
 
     <label>last Name : </label>
     <input th:field="*{lastName}">
-    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></label><br><br>
+    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></label><br>
 
     <label>Phone Number : </label>
     <input th:field="*{phoneNumber}">

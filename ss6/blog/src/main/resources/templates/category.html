@@ -13,7 +13,7 @@
 <body>
 
     <button class="btn btn-primary btn-lg">
-        <a style="color: white; text-decoration: none" th:href="@{/create}">Create new Category</a>
+        <a style="color: white; text-decoration: none" th:href="@{/category/create}">Create new Category</a>
     </button>
 </p>
 <h2 style="color: red;font-size: 50px;background-color: lightgray;text-align: center">List Category</h2>
@@ -37,7 +37,7 @@
         <td th:text="${category.name}"></td>
         <td>
             <button class="btn btn-outline-primary">
-                <a style="color: red; text-decoration: none" th:href="@{/edit/__${category.id}__}">Edit</a>
+                <a style="color: red; text-decoration: none" th:href="@{/edit_category/__${category.id}__}">Edit</a>
             </button>
         </td>
         <td>

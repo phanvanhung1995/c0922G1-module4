@@ -55,7 +55,7 @@
     <tr th:each="blog:${blogPage}">
         <td th:text="${blog.id}"></td>
         <td th:text="${blog.name}"></td>
-        <td th:text="*{blog.category.name}">
+        <td th:text="${blog.category.name}">
         </td>
         <td th:text="${blog.content}"></td>
         <td th:text="${blog.timeUp}"></td>

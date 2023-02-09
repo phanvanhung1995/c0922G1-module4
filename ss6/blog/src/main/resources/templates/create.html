@@ -14,11 +14,16 @@
 </p>
 
 <form th:action="@{/save}" method="post" th:object="${blog}">
-<!--    <label>Id  : </label>-->
+
     <input hidden th:field="*{id}"><br>
 
     <label>Name  : </label>
     <input th:field="*{name}"><br>
+
+    <label>Category : </label>
+    <select th:field="*{category}">
+        <option th:each="cate:${categoryList}" th:text="${cate.name}"th:value="${cate.id}"></option>
+    </select>
 
     <label>content  : </label>
     <input th:field="*{content}"><br>

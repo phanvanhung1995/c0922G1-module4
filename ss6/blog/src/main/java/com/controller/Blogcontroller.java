@@ -2,6 +2,7 @@ package com.controller;
 
 import com.model.Blog;
 import com.service.BlogService;
+import com.service.CategoryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,8 @@ import java.util.Optional;
 public class Blogcontroller {
     @Autowired
    private BlogService blogService;
+    @Autowired
+    private CategoryService categoryService;
 
 
 //    @GetMapping("/")
@@ -50,12 +53,14 @@ public class Blogcontroller {
         Page<Blog> blogPage = blogService.findByNameContaining(nameSearch,pageable);
         model.addAttribute("blogPage", blogPage);
         model.addAttribute("nameSearch", nameSearch);
+
         return "/list";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("blog", new Blog());
+        model.addAttribute("categoryList", categoryService.findAll());
         return "/create";
     }
 

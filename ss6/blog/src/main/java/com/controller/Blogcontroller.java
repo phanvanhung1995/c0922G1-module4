@@ -27,6 +27,7 @@ public class Blogcontroller {
     @Autowired
    private BlogService blogService;
 
+
 //    @GetMapping("/")
 //    public String showList(Model model) {
 //        List<Blog> blog = blogService.findAll();

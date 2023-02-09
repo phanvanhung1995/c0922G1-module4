@@ -23,10 +23,10 @@
 
 <!--sắp xếp-->
 <form th:action="@{/sort}">
-<select name="sort">
-    <option value="id">Id</option>
-    <option value="name">Name</option>
-</select>
+    <select name="sort">
+        <option value="id">Id</option>
+        <option value="name">Name</option>
+    </select>
     <input value="sort" type="submit">
 </form>
 
@@ -48,13 +48,15 @@
     </tr>
     <tr>
         <td th:colspan="7" th:if="${blogPage.isEmpty()}">
-            <p >Danh sách trống</p>
+            <p>Danh sách trống</p>
         </td>
     </tr>
 
     <tr th:each="blog:${blogPage}">
         <td th:text="${blog.id}"></td>
         <td th:text="${blog.name}"></td>
+        <td th:text="*{blog.category.name}">
+        </td>
         <td th:text="${blog.content}"></td>
         <td th:text="${blog.timeUp}"></td>
         <td>
@@ -78,7 +80,8 @@
 
 <!--phân trang-->
 <div>
-    <a th:href="@{/(page=${blogPage.number - 1},nameSearch = ${nameSearch})}"  th:if="${blogPage.hasPrevious()}">Trước</a>
+    <a th:href="@{/(page=${blogPage.number - 1},nameSearch = ${nameSearch})}"
+       th:if="${blogPage.hasPrevious()}">Trước</a>
     <span th:text="${blogPage.number + 1 }">/<span th:text="${blogPage.totalPages}"></span></span>
     <a th:href="@{/(page=${blogPage.number + 1},nameSearch = ${nameSearch})}" th:if="${blogPage.hasNext()}">sau</a>
 </div>

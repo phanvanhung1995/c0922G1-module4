@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Song</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<div th:replace="/layout::nav">
+</div>
+<body>
+
+<p>
+    <button class="btn btn-primary btn-lg">
+        <a style="color: white; text-decoration: none" th:href="@{/create}">Create new Song</a>
+    </button>
+</p>
+<h2 style="color: red;font-size: 50px;background-color: lightgray;text-align: center">List Song</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>SINGER</th>
+        <th>KIND OF MUSIC</th>
+        <th>UPDATE</th>
+    </tr>
+
+    <tr th:each="song:${songList}">
+        <td th:text="*{song.id}"></td>
+        <td th:text="*{song.name}"></td>
+        <td th:text="*{song.singer}"></td>
+        <td th:text="*{song.kindOfMusic}"></td>
+        <td>
+            <button class="btn btn-outline-primary">
+            <a th:href="@{/update/__${song.id}__}" >update</a>
+            </button>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

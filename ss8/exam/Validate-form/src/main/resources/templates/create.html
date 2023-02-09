@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="/layout::nav">
+</div>
+<p>
+    <a th:href="@{/}">Back to list User</a>
+</p>
+
+<form th:action="@{/save}" method="post" th:object="${userDto}">
+    <input hidden th:field="*{id}" th:value="*{id}">
+    <label>first Name : </label>
+    <input th:field="*{firstName}">
+    <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></label><br>
+
+    <label>last Name : </label>
+    <input th:field="*{lastName}">
+    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></label><br><br>
+
+    <label>Phone Number : </label>
+    <input th:field="*{phoneNumber}">
+    <label th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></label><br>
+
+    <label>age : </label>
+    <input th:field="*{age}">
+    <label th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></label><br>
+
+    <label>Email : </label>
+    <input th:field="*{email}">
+    <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label><br>
+
+    <button>Save</button>
+</form>
+</body>
+</html>

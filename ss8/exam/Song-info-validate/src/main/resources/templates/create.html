@@ -16,17 +16,17 @@
     <a th:href="@{/}">Back to list Song</a>
 </p>
 
-<form th:action="@{/save}" th:object="${song}" method="post">
+<form th:action="@{/save}" th:object="${songDto}" method="post">
     <input th:field="*{id}" th:value="*{id}" hidden>
     <label>Name Song : </label>
     <input th:field="*{name}">
-    <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label><br>
+    <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p><br>
     <label>Singer : </label>
     <input th:field="*{singer}">
-    <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label><br>
+    <p style="color: red" th:if="${#fields.hasErrors('singer')}" th:errors="*{singer}"></p><br>
     <label> Kind Of Music: </label>
     <input th:field="*{kindOfMusic}">
-    <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label><br>
+    <p style="color: red" th:if="${#fields.hasErrors('kindOfMusic')}" th:errors="*{kindOfMusic}"></p><br>
     <button>Save</button>
 </form>
 </body>

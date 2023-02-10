@@ -1,7 +1,9 @@
 package com.controller;
 
+import com.dto.SongDto;
 import com.model.Song;
 import com.service.impl.SongServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,15 +29,17 @@ public class SongController {
     @GetMapping("/create")
     public String create( Model model) {
 
-        model.addAttribute("song",new Song());
+        model.addAttribute("songDto",new SongDto());
         return "/create";
     }
     @PostMapping("/save")
-    public String save(@Validated @ModelAttribute Song song,BindingResult bindingResult,Model model){
+    public String save(@Validated @ModelAttribute SongDto songDto,BindingResult bindingResult,Model model){
         if (bindingResult.hasErrors()) {
-            model.addAttribute("song",song);
+            model.addAttribute("songDto",songDto);
             return "/create";
         }
+        Song song = new Song();
+        BeanUtils.copyProperties(songDto,song);
         songService.update(song);
         return "redirect:/";
     }

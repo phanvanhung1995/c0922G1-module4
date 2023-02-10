@@ -8,4 +8,6 @@ public interface IUserService {
     List<User> findAll();
 
     void create(User user);
+
+    boolean checkEmail(String email);
 }

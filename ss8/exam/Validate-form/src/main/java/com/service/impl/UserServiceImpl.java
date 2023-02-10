@@ -22,4 +22,15 @@ public class UserServiceImpl implements IUserService {
     public void create(User user) {
         iUserrepository.save(user);
     }
+
+    @Override
+    public boolean checkEmail(String email) {
+        List<User> userList = iUserrepository.findAll();
+        for (User user : userList) {
+            if (user.getEmail().equals(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

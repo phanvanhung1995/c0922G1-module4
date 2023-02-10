@@ -39,8 +39,16 @@ public class UserController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("userDto", userDto);
+
             return "/create";
         }
+
+        if (userService.checkEmail(userDto.getEmail())) {
+            model.addAttribute("userDto",userDto);
+            bindingResult.rejectValue("email","email","email không được trùng lặp");
+            return "/create";
+        }
+
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
         userService.create(user);

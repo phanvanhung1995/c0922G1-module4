@@ -82,7 +82,7 @@
 <div>
     <a th:href="@{/(page=${blogPage.number - 1},nameSearch = ${nameSearch})}"
        th:if="${blogPage.hasPrevious()}">Trước</a>
-    <span th:text="${blogPage.number + 1 }">/<span th:text="${blogPage.totalPages}"></span></span>
+        <span th:text="${blogPage.number + 1 }">/<span th:text="${blogPage.totalPages}"></span></span>
     <a th:href="@{/(page=${blogPage.number + 1},nameSearch = ${nameSearch})}" th:if="${blogPage.hasNext()}">sau</a>
 </div>
 

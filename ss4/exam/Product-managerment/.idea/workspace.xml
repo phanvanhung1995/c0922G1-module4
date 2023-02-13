@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3c492c3-b0dc-4342-90f2-a342956458d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/java/com/controller/Blogcontroller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/java/com/model/Blog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/java/com/repository/IBlogRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/java/com/service/BlogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/java/com/service/IBlogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/filter/FilterAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/filter/FilterAll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/controller/BookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/model/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/model/BookCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/repository/IBookRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/service/IBookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/service/impl/BookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/resources/templates/views/borrowBook.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/resources/templates/views/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/model/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/model/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/repository/IUserrepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/repository/IUserrepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/resources/templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss8/pratice/custome-phone-validate/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/pratice/custome-phone-validate/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,24 +80,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/codegym/module_4/ss4/exam/Product-managerment&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;37b761d0523ec4623143d0edaaf820a2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/codegym/module_4/ss4/practice/Customer-Management",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "spring.configuration.checksum": "37b761d0523ec4623143d0edaaf820a2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\codegym\module_4\ss4\exam\Product-managerment\src\main\java\com\config" />
@@ -202,6 +208,7 @@
       <workItem from="1675742418724" duration="1055000" />
       <workItem from="1675744059885" duration="1714000" />
       <workItem from="1675757689886" duration="6000" />
+      <workItem from="1676271702127" duration="40000" />
     </task>
     <servers />
   </component>

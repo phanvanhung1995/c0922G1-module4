@@ -4,6 +4,8 @@ import com.model.User;
 import com.repository.IUserrepository;
 import com.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +34,10 @@ public class UserServiceImpl implements IUserService {
             }
         }
         return false;
+    }
+
+    @Override
+    public Page<User> findAllByLastNameAndAge(String name, String age, Pageable pageable) {
+        return iUserrepository.findAllByLastNameContainingAndAgeContaining(name,age,pageable);
     }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>book card</title>
+</head>
+<body>
+<h2>list book card</h2>
+<table border="1px">
+    <tr>
+        <th>Id</th>
+        <th>Id Card </th>
+        <th>Name</th>
+        <th>Book Code</th>
+        <th>Pay</th>
+    </tr>
+
+    <tr th:each="bookCard:${bookCardList}" >
+        <td th:text="${bookCard.id}"></td>
+        <td th:text="${bookCard.idCard}"></td>
+        <td th:text="${bookCard.name}"></td>
+        <td th:text="${bookCard.bookCode}"></td>
+        <td>
+            <button>
+                <a th:href="@{/pay/__${bookCard.id}__}">Pay</a>
+            </button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

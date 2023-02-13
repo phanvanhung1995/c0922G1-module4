@@ -1,5 +1,9 @@
 package com.model;
 
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,11 +11,9 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+@Component
+public class UserDto implements Validator {
 
-@Entity
-public class UserDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank(message = "cần đủ 4-45 ký tự")
     @Pattern(regexp = "^[a-zA-Z]{4,45}", message = "cần đủ 4-45 ký tự")
@@ -26,6 +28,8 @@ public class UserDto {
     private String age;
     @Email(message = "email không đúng ddihj dạng")
     private String email;
+
+
 
     public UserDto() {
     }
@@ -85,5 +89,20 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        UserDto userDto = (UserDto) target;
+
+        String phoneNumber = userDto.getPhoneNumber();
+        if (phoneNumber.length()!=10) {
+            errors.rejectValue("phoneNumber", "phoneNumber","sdt là 10 số");
+        }
     }
 }

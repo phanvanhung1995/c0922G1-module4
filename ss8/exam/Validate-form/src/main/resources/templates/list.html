@@ -20,6 +20,11 @@
 </p>
 <h2 style="color: red;font-size: 50px;background-color: lightgray;text-align: center">List User</h2>
 
+<form action="/">
+    <input th:name="${lastName}" th:value="${lastName}" placeholder="nhập last Name : " >
+    <input th:name="${age}" th:value="${age}" placeholder="nhập age : " >
+    <button>Search</button>
+</form>
 <table class="table table-striped">
     <tr>
         <th>Id</th>
@@ -30,7 +35,7 @@
         <th>email</th>
     </tr>
 
-    <tr th:each="user:${userList}">
+    <tr th:each="user:${userPage}">
         <td th:text="*{user.id}"></td>
         <td th:text="*{user.firstName}"></td>
         <td th:text="*{user.lastName}"></td>
@@ -39,5 +44,15 @@
         <td th:text="*{user.email}"></td>
     </tr>
 </table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a th:if="${userPage.hasPrevious()}" th:href="@{/(page=${userPage.number -1},lastName = ${lastName},age =${age})}" class="page-link">Previous</a></li>
+        <span th:text="${userPage.number + 1 }">/<span th:text="${userPage.totalPages}"></span></span>
+        <li class="page-item">
+            <a th:if="${userPage.hasNext()}" th:href="@{/(page=${userPage.number -1},lastName = ${lastName},age =${age})}" class="page-link">Next</a></li>
+    </ul>
+</nav>
 </body>
 </html>

@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Gradle : com : Product-managerment-1.0-SNAPSHOT.war" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3c492c3-b0dc-4342-90f2-a342956458d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/controller/BookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/model/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/model/BookCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/repository/IBookRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/service/IBookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/java/com/service/impl/BookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/resources/templates/views/borrowBook.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ss9/exam/book-application/src/main/resources/templates/views/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss6/blog/src/main/resources/templates/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/model/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/model/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/repository/IUserrepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/repository/IUserrepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/service/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/java/com/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/exam/Validate-form/src/main/resources/templates/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ss8/pratice/custome-phone-validate/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss8/pratice/custome-phone-validate/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss10/exam/cart/src/main/java/com/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss10/exam/cart/src/main/java/com/model/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss10/exam/cart/src/main/java/com/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss10/exam/cart/src/main/java/com/repository/IProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss10/exam/cart/src/main/java/com/service/IProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss10/exam/cart/src/main/java/com/service/impl/ProductService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +80,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/codegym/module_4/ss4/practice/Customer-Management",
+    "last_opened_file_path": "D:/codegym/module_4/ss4/exam/Product-managerment",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -209,6 +203,7 @@
       <workItem from="1675744059885" duration="1714000" />
       <workItem from="1675757689886" duration="6000" />
       <workItem from="1676271702127" duration="40000" />
+      <workItem from="1676349662324" duration="174000" />
     </task>
     <servers />
   </component>

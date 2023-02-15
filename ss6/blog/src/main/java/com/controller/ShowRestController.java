@@ -28,8 +28,9 @@ public class ShowRestController {
         if (categoryList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(categoryList,HttpStatus.OK);
+        return new ResponseEntity<>(categoryList, HttpStatus.OK);
     }
+
 
     @GetMapping("/blog")
     public ResponseEntity<List<Blog>> getAllBlog() {
@@ -37,16 +38,25 @@ public class ShowRestController {
         if (blogList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(blogList,HttpStatus.OK);
+        return new ResponseEntity<>(blogList, HttpStatus.OK);
     }
 
-    @GetMapping("/view/{id}")
+    @GetMapping("/blog/{id}")
     public ResponseEntity<Blog> viewBlog(@PathVariable int id) {
         Blog blog = blogService.findById(id);
-        if (blog==null) {
+        if (blog == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(blog,HttpStatus.OK);
+        return new ResponseEntity<>(blog, HttpStatus.OK);
+    }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<Category> viewCategory(@PathVariable int id) {
+        Category category = categoryService.findById(id);
+        if (category == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
 }

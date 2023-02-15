@@ -30,11 +30,11 @@
     <input value="sort" type="submit">
 </form>
 
-<!--tìm kiếm theo ten-->
-<form action="/">
-    <input th:name="nameSearch" placeholder="nhập tên muốn tìm : " th:value="${nameSearch}">
-    <button>Search</button>
-</form>
+<button>
+    <a th:href="@{/category}">category list</a>
+</button>
+
+
 <table class="table table-striped">
     <tr>
         <th>ID</th>

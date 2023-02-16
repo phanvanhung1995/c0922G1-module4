@@ -21,5 +21,6 @@ public interface IBlogService {
     public Page<Blog> findByNameContaining(String name, Pageable pageable);
 
     Page<Blog> findAll(Pageable pageable);
+    public Page<Blog> search(String name, Pageable pageable) ;
 
 }

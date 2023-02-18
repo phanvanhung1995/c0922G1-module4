@@ -10,7 +10,7 @@ public class Category {
     private int id;
     private String name;
     @OneToMany(mappedBy = "category")
-    Set<Blog> blogSet;
+   private Set<Blog> blogSet;
 
     public Category() {
     }

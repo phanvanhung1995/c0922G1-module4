@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Customer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+        .center {
+            text-align: center;
+            padding: 20px;
+            font-size: 100%;
+        }
+        a {
+            text-decoration: none;
+        }
+        .img {
+            background-image: url("https://furamavietnam.com/wp-content/uploads/2018/07/Vietnam_Danang_Furama_Resort_Exterior_Courtyard.jpg ");
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .footer {
+            background-color: burlywood;
+        }
+        .content {
+            padding: 5px;
+        }
+        body {
+            margin: 0px 12px;
+        }
+        .background {
+            color: red;
+            font-size: 200%;
+            background-color: aquamarine;;
+            margin: 0px
+        }
+        .nav2 {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+        }
+        row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="/home::header"></header>
+<nav th:replace="/home::nav"></nav>
+
+<h2 class="center background">List Customer</h2>
+
+<p>.</p>
+<p>
+    <button style="float: left" type="button" class="btn btn-primary btn-lg"><a th:href="@{/customer/create}" style="color: white"
+                                                                                >Create
+        New Customer</a></button>
+</p>
+
+<table class="table table-striped">
+    <tr style="text-align: center">
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DATE OF BIRTH</th>
+        <th>GENDER</th>
+        <th> ID CARD</th>
+        <th> PHONE NUMBER</th>
+        <th>EMAIL</th>
+        <th>ADDRESS</th>
+        <th>TYPE_ID</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+        <th>VIEW</th>
+    </tr>
+    <tr th:each="customer:${customerPage}">
+        <td th:text="*{customer.id}"></td>
+        <td th:text="*{customer.name}"></td>
+        <td th:text="*{customer.dateOfBirt}"></td>
+        <td th:text="*{customer.gender}"></td>
+        <td th:text="*{customer.idCard}"></td>
+        <td th:text="*{customer.phoneNumber}"></td>
+        <td th:text="*{customer.email}"></td>
+        <td th:text="*{customer.address}"></td>
+        <td th:text="*{customer.customerTypeId.getName()}"></td>
+        <td>
+            <button class="btn btn-outline-primary">
+                <a style="color: red; text-decoration: none" th:href="@{/edit/__${customer.id}__}">Edit</a>
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-primary ">
+                <a style="color: red; text-decoration: none" th:href="@{/delete/__${customer.id}__}">Delete</a>
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-primary">
+                <a style="color: red; text-decoration: none" th:href="@{/view/__${customer.id}__}">View</a>
+            </button>
+        </td>
+    </tr>
+</table>
+<footer th:replace="/home::footer"></footer>
+</body>
+</html>

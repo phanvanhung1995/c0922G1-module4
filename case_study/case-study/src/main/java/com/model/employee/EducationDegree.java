@@ -10,7 +10,7 @@ public class EducationDegree {
     private long id;
     @Column(columnDefinition = "varchar(45)")
     private String name;
-    @OneToMany(mappedBy = "EducationDegreeID")
+    @OneToMany(mappedBy = "educationDegreeId")
     Set<Employee> employeeSet;
 
     public EducationDegree() {

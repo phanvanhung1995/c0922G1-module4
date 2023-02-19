@@ -1,6 +1,7 @@
 package com.model.employee;
 
 import com.model.contract.Contract;
+import com.model.login.User;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -24,16 +25,20 @@ public class Employee {
     @Column(columnDefinition = "varchar(45)")
     private String address;
     @ManyToOne
-    @JoinColumn(name = "position_id",nullable = false,referencedColumnName = "id")
+    @JoinColumn(name = "position_id", nullable = false, referencedColumnName = "id")
     private Position positionId;
     @ManyToOne
-    @JoinColumn(name = "education_degree_id",nullable = false,referencedColumnName = "id")
+    @JoinColumn(name = "education_degree_id", nullable = false, referencedColumnName = "id")
     private EducationDegree educationDegreeId;
     @ManyToOne
-    @JoinColumn(name = "division_id",nullable = false,referencedColumnName = "id")
+    @JoinColumn(name = "division_id", nullable = false, referencedColumnName = "id")
     private Division divisionId;
     @OneToMany(mappedBy = "employeeID")
     Set<Contract> contractSet;
+
+    @OneToOne
+    @JoinColumn(name = "username", referencedColumnName = "userName")
+    private User user;
 
     public Employee() {
     }

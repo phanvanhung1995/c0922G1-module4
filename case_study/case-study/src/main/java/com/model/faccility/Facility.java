@@ -23,7 +23,8 @@ public class Facility {
     private int numberOfFloors;
     @ManyToOne
     @JoinColumn(name = "rent_type_id",nullable = false,referencedColumnName = "id")
-    private RentType rentTypeId;@ManyToOne
+    private RentType rentTypeId;
+    @ManyToOne
     @JoinColumn(name = "facility_type_id",nullable = false,referencedColumnName = "id")
     private FacilityType facilityTypeID;
 

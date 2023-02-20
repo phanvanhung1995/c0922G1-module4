@@ -8,10 +8,10 @@ public class FacilityType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String name;
     @OneToMany(mappedBy = "facilityTypeID")
-    Set<Facility> facilitySet;
+    private Set<Facility> facilitySet;
 
     public FacilityType() {
     }

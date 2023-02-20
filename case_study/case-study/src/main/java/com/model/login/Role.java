@@ -18,11 +18,6 @@ public class Role {
     public Role() {
     }
 
-    public Role(long id, String name, Set<User> userSet) {
-        this.id = id;
-        Name = name;
-        this.userSet = userSet;
-    }
 
     public long getId() {
         return id;

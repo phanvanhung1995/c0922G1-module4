@@ -4,37 +4,39 @@ import com.model.contract.Contract;
 import com.model.login.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private long id;
     @Column(columnDefinition = "varchar(45)")
     private String name;
     @Column(columnDefinition = "date")
     private String dateOfBirt;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String idCard;
     private double salary;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String phoneNumber;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String email;
     @Column(columnDefinition = "varchar(45)")
     private String address;
     @ManyToOne
-    @JoinColumn(name = "position_id", nullable = false, referencedColumnName = "id")
-    private Position positionId;
+    @JoinColumn(name = "position", nullable = false, referencedColumnName = "id")
+    private Position position;
     @ManyToOne
-    @JoinColumn(name = "education_degree_id", nullable = false, referencedColumnName = "id")
-    private EducationDegree educationDegreeId;
+    @JoinColumn(name = "education_degree", nullable = false, referencedColumnName = "id")
+    private EducationDegree educationDegree;
     @ManyToOne
-    @JoinColumn(name = "division_id", nullable = false, referencedColumnName = "id")
-    private Division divisionId;
+    @JoinColumn(name = "division", nullable = false, referencedColumnName = "id")
+    private Division division;
     @OneToMany(mappedBy = "employeeID")
-    Set<Contract> contractSet;
+   private Set<Contract> contractSet;
 
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "userName")
@@ -107,27 +109,43 @@ public class Employee {
         this.address = address;
     }
 
-    public Position getPositionId() {
-        return positionId;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setPositionId(Position positionId) {
-        this.positionId = positionId;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
-    public EducationDegree getEducationDegreeId() {
-        return educationDegreeId;
+    public EducationDegree getEducationDegree() {
+        return educationDegree;
     }
 
-    public void setEducationDegreeId(EducationDegree educationDegreeId) {
-        this.educationDegreeId = educationDegreeId;
+    public void setEducationDegree(EducationDegree educationDegree) {
+        this.educationDegree = educationDegree;
     }
 
-    public Division getDivisionId() {
-        return divisionId;
+    public Division getDivision() {
+        return division;
     }
 
-    public void setDivisionId(Division divisionId) {
-        this.divisionId = divisionId;
+    public void setDivision(Division division) {
+        this.division = division;
+    }
+
+    public Set<Contract> getContractSet() {
+        return contractSet;
+    }
+
+    public void setContractSet(Set<Contract> contractSet) {
+        this.contractSet = contractSet;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

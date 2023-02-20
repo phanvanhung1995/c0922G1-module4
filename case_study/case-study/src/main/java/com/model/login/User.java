@@ -1,5 +1,6 @@
 package com.model.login;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.model.employee.Employee;
 
 import javax.persistence.*;
@@ -9,9 +10,10 @@ import java.util.Set;
 public class User {
     @Id
     @Column(columnDefinition = "varchar(225)")
-    private String userName;
+    private String username;
     @Column(columnDefinition = "varchar(225)")
-    private String passWord;
+    @JsonIgnore
+    private String password;
 
     @OneToOne(mappedBy = "user")
     private Employee employee;
@@ -24,27 +26,21 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String passWord, Employee employee, Set<Role> roleSet) {
-        this.userName = userName;
-        this.passWord = passWord;
-        this.employee = employee;
-        this.roleSet = roleSet;
+
+    public String getUsername() {
+        return username;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getPassword() {
+        return password;
     }
 
-    public String getPassWord() {
-        return passWord;
-    }
-
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Employee getEmployee() {

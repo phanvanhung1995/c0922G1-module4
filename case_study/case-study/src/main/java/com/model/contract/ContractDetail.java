@@ -9,21 +9,15 @@ public class ContractDetail {
     private long id;
     private int quantity;
     @ManyToOne
-    @JoinColumn(name = "contract_id",nullable = false,referencedColumnName = "id")
-    private Contract contractID;
+    @JoinColumn(name = "contract",nullable = false,referencedColumnName = "id")
+    private Contract contract;
     @ManyToOne
-    @JoinColumn(name = "attach_facility_id",nullable = false,referencedColumnName = "id")
-    private AttachFacility attachFacilityID;
+    @JoinColumn(name = "attach_facility",nullable = false,referencedColumnName = "id")
+    private AttachFacility attachFacility;
 
     public ContractDetail() {
     }
 
-    public ContractDetail(long id, int quantity, Contract contractID, AttachFacility attachFacilityID) {
-        this.id = id;
-        this.quantity = quantity;
-        this.contractID = contractID;
-        this.attachFacilityID = attachFacilityID;
-    }
 
     public long getId() {
         return id;
@@ -41,19 +35,19 @@ public class ContractDetail {
         this.quantity = quantity;
     }
 
-    public Contract getContractID() {
-        return contractID;
+    public Contract getContract() {
+        return contract;
     }
 
-    public void setContractID(Contract contractID) {
-        this.contractID = contractID;
+    public void setContractID(Contract contract) {
+        this.contract = contract;
     }
 
-    public AttachFacility getAttachFacilityID() {
-        return attachFacilityID;
+    public AttachFacility getAttachFacility() {
+        return attachFacility;
     }
 
-    public void setAttachFacilityID(AttachFacility attachFacilityID) {
-        this.attachFacilityID = attachFacilityID;
+    public void setAttachFacilityID(AttachFacility attachFacility) {
+        this.attachFacility = attachFacility;
     }
 }

@@ -16,21 +16,21 @@ public class Customer {
     @Column(columnDefinition = "date")
     private String dateOfBirt;
     private String gender;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String idCard;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String phoneNumber;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
 
     private String email;
     @Column(columnDefinition = "varchar(45)")
     private String address;
     @ManyToOne
-    @JoinColumn(name = "customer_type_id", nullable = false, referencedColumnName = "id")
-    private CustomerType customerTypeId;
+    @JoinColumn(name = "customer_type", nullable = false, referencedColumnName = "id")
+    private CustomerType customerType;
 
     @OneToMany(mappedBy = "customerID")
-    Set<Contract> contractSet;
+    private Set<Contract> contractSet;
 
     public Customer() {
     }
@@ -99,12 +99,12 @@ public class Customer {
         this.address = address;
     }
 
-    public CustomerType getCustomerTypeId() {
-        return customerTypeId;
+    public CustomerType getCustomerType() {
+        return customerType;
     }
 
-    public void setCustomerTypeId(CustomerType customerTypeId) {
-        this.customerTypeId = customerTypeId;
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
     }
 
     public Set<Contract> getContractSet() {

@@ -13,35 +13,44 @@
             padding: 20px;
             font-size: 100%;
         }
+
         a {
             text-decoration: none;
         }
+
         .img {
             background-image: url("https://furamavietnam.com/wp-content/uploads/2018/07/Vietnam_Danang_Furama_Resort_Exterior_Courtyard.jpg ");
         }
+
         * {
             box-sizing: border-box;
         }
+
         .footer {
             background-color: burlywood;
         }
+
         .content {
             padding: 5px;
         }
+
         body {
             margin: 0px 12px;
         }
+
         .background {
             color: red;
             font-size: 200%;
             background-color: aquamarine;;
             margin: 0px
         }
+
         .nav2 {
             position: -webkit-sticky;
             position: sticky;
             top: 0;
         }
+
         row {
             display: flex;
             flex-wrap: wrap;
@@ -50,16 +59,69 @@
 </head>
 <body>
 <header th:replace="/home::header"></header>
-<nav th:replace="/home::nav"></nav>
+
+<!--navbar-->
+<nav th:fragment="nav" class="navbar navbar-expand-lg text-bg-success nav2">
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost:8080/#">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/EmployeeServlet">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer/">Customer</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Service
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Contract</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search" style="padding-top: 8px"  method="get">
+                <input name="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input name="email" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <select name="customerTypeId">
+                    <option value="">type</option>
+                    <option th:each="customers:${customerTypes}" th:value="${customers.id}"
+                            th:text="${customers.name}"></option>
+                </select>
+                <button class="btn btn-outline-danger" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
 
 <h2 class="center background">List Customer</h2>
 
 <p>.</p>
 <p>
-    <button style="float: left" type="button" class="btn btn-primary btn-lg"><a th:href="@{/customer/create}" style="color: white"
-                                                                                >Create
+    <button style="float: left" type="button" class="btn btn-primary btn-lg"><a th:href="@{/customer/create}"
+                                                                                style="color: white"
+    >Create
         New Customer</a></button>
 </p>
+
+<p></p>
+<p style="color:red;" th:text="${mess}"></p>
 
 <table class="table table-striped">
     <tr style="text-align: center">
@@ -80,29 +142,40 @@
         <td th:text="*{customer.id}"></td>
         <td th:text="*{customer.name}"></td>
         <td th:text="*{customer.dateOfBirt}"></td>
-        <td th:text="*{customer.gender}"></td>
+        <td th:if="(*{customer.gender}==1)">nam</td>
+        <td th:if="(*{customer.gender}==0)">nữ</td>
         <td th:text="*{customer.idCard}"></td>
         <td th:text="*{customer.phoneNumber}"></td>
         <td th:text="*{customer.email}"></td>
         <td th:text="*{customer.address}"></td>
-        <td th:text="*{customer.customerTypeId.getName()}"></td>
+        <td th:text="*{customer.customerType.getName()}"></td>
         <td>
             <button class="btn btn-outline-primary">
-                <a style="color: red; text-decoration: none" th:href="@{/edit/__${customer.id}__}">Edit</a>
+                <a style="color: red; text-decoration: none" th:href="@{/customer/edit/__${customer.id}__}">Edit</a>
             </button>
         </td>
         <td>
             <button class="btn btn-outline-primary ">
-                <a style="color: red; text-decoration: none" th:href="@{/delete/__${customer.id}__}">Delete</a>
+                <a style="color: red; text-decoration: none" th:href="@{/customer/delete/__${customer.id}__}">Delete</a>
             </button>
         </td>
         <td>
             <button class="btn btn-outline-primary">
-                <a style="color: red; text-decoration: none" th:href="@{/view/__${customer.id}__}">View</a>
+                <a style="color: red; text-decoration: none" th:href="@{/customer/view/__${customer.id}__}">View</a>
             </button>
         </td>
     </tr>
 </table>
+
+<!--phân trang-->
+<div>
+    <a th:href="@{/customer/(page=${customerPage.number - 1})}"
+       th:if="${customerPage.hasPrevious()}">Trước</a>
+    <span th:text="${customerPage.number + 1 }">/<span th:text="${customerPage.totalPages}"></span></span>
+    <a th:href="@{/customer/(page=${customerPage.number + 1})}" th:if="${customerPage.hasNext()}">sau</a>
+</div>
+
+
 <footer th:replace="/home::footer"></footer>
 </body>
 </html>

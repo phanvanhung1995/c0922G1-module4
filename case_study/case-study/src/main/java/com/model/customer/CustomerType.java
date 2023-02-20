@@ -10,17 +10,13 @@ public class CustomerType {
     private long id;
     @Column(columnDefinition = "varchar(45)")
     private String name;
-    @OneToMany(mappedBy = "customerTypeId")
-    Set<Customer> customerSet;
+    @OneToMany(mappedBy = "customerType")
+    private Set<Customer> customerSet;
 
     public CustomerType() {
     }
 
-    public CustomerType(long id, String name, Set<Customer> customerSet) {
-        this.id = id;
-        this.name = name;
-        this.customerSet = customerSet;
-    }
+
 
     public long getId() {
         return id;

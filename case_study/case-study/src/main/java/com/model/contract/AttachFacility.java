@@ -12,18 +12,9 @@ public class AttachFacility {
     private double cost;
     private String unit;
     private String status;
-    @OneToMany(mappedBy = "attachFacilityID")
+    @OneToMany(mappedBy = "attachFacility")
     private Set<ContractDetail> contractDetailSet;
 
-    public AttachFacility(long id, String name, double cost, String unit, String status, Set<ContractDetail>
-            contractDetailSet) {
-        this.id = id;
-        this.name = name;
-        this.cost = cost;
-        this.unit = unit;
-        this.status = status;
-        this.contractDetailSet = contractDetailSet;
-    }
 
     public AttachFacility() {
     }

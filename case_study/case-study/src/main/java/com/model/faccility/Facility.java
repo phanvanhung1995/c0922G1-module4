@@ -10,7 +10,7 @@ public class Facility {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String name;
     private int area;
     private double cost;
@@ -29,7 +29,7 @@ public class Facility {
     private FacilityType facilityTypeID;
 
     @OneToMany(mappedBy = "facilityID")
-    Set<Contract> contractSet;
+    private Set<Contract> contractSet;
     public Facility() {
     }
 

@@ -8,19 +8,15 @@ public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String name;
-    @OneToMany(mappedBy = "positionId")
+    @OneToMany(mappedBy = "position")
     private Set<Employee> employeeSet;
 
     public Position() {
     }
 
-    public Position(long id, String name, Set<Employee> employeeSet) {
-        this.id = id;
-        this.name = name;
-        this.employeeSet = employeeSet;
-    }
+
 
     public long getId() {
         return id;

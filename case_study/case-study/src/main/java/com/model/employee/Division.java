@@ -8,16 +8,11 @@ public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String name;
-    @OneToMany(mappedBy = "divisionId")
+    @OneToMany(mappedBy = "division")
     private Set<Employee> employeeSet;
 
-    public Division(long id, String name, Set<Employee> employeeSet) {
-        this.id = id;
-        this.name = name;
-        this.employeeSet = employeeSet;
-    }
 
     public Division() {
     }

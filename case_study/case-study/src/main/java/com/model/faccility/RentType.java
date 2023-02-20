@@ -11,7 +11,7 @@ public class RentType {
     @Column(columnDefinition = "varchar(45)")
     private String name;
     @OneToMany(mappedBy = "rentTypeId")
-    Set<Facility> facilitySet;
+    private Set<Facility> facilitySet;
 
     public RentType() {
     }

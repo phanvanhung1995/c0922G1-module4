@@ -8,18 +8,12 @@ public class EducationDegree {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "varchar(45)")
+    @Column(columnDefinition = "varchar(45) unique")
     private String name;
-    @OneToMany(mappedBy = "educationDegreeId")
-    Set<Employee> employeeSet;
+    @OneToMany(mappedBy = "educationDegree")
+    private Set<Employee> employeeSet;
 
     public EducationDegree() {
-    }
-
-    public EducationDegree(long id, String name, Set<Employee> employeeSet) {
-        this.id = id;
-        this.name = name;
-        this.employeeSet = employeeSet;
     }
 
     public long getId() {

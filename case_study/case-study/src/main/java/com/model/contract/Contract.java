@@ -11,7 +11,7 @@ import java.util.Set;
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @Column(columnDefinition = "date")
     private String starDate;
     @Column(columnDefinition = "date")
@@ -27,29 +27,18 @@ public class Contract {
     @JoinColumn(name = "facility_id", nullable = false, referencedColumnName = "id")
     private Facility facilityID;
 
-    @OneToMany(mappedBy = "contractID")
-    Set<ContractDetail> contractDetailSet;
+    @OneToMany(mappedBy = "contract")
+    private Set<ContractDetail> contractDetailSet;
 
     public Contract() {
     }
 
-    public Contract(long id, String starDate, String endDate, double deposit, Employee employeeID, Customer customerID,
-                    Facility facilityID, Set<ContractDetail> contractDetailSet) {
-        this.id = id;
-        this.starDate = starDate;
-        this.endDate = endDate;
-        this.deposit = deposit;
-        this.employeeID = employeeID;
-        this.customerID = customerID;
-        this.facilityID = facilityID;
-        this.contractDetailSet = contractDetailSet;
-    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

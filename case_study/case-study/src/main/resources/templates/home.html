@@ -11,35 +11,44 @@
             padding: 20px;
             font-size: 100%;
         }
+
         a {
             text-decoration: none;
         }
+
         .img {
             background-image: url("https://furamavietnam.com/wp-content/uploads/2018/07/Vietnam_Danang_Furama_Resort_Exterior_Courtyard.jpg ");
         }
+
         * {
             box-sizing: border-box;
         }
+
         .footer {
             background-color: burlywood;
         }
+
         .content {
             padding: 5px;
         }
+
         body {
             margin: 0px 12px;
         }
+
         .background {
             color: red;
             font-size: 200%;
             background-color: aquamarine;;
             margin: 0px
         }
+
         .nav2 {
             position: -webkit-sticky;
             position: sticky;
             top: 0;
         }
+
         row {
             display: flex;
             flex-wrap: wrap;
@@ -49,8 +58,8 @@
 
 <body>
 
-<header th:fragment="header">
-    <div class="row">
+<header  th:fragment="header">
+    <div style="background: aliceblue" class="row ">
         <div class="col-lg-3 col-sm-6">
             <div class="center">
                 <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo.png">
@@ -155,7 +164,7 @@
                 </li>
             </ul>
             <form class="d-flex" role="search" style="padding-top: 8px">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input name="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-danger" type="submit">Search</button>
             </form>
         </div>
@@ -165,7 +174,7 @@
 
 <!--content-->
 <div th:fragment="content">
-    <div class="row nav2" >
+    <div class="row nav2">
         <div class="col-lg-3">
             <h1>item one</h1>
             <h1>item two</h1>
@@ -173,7 +182,8 @@
         </div>
         <div class="col-lg-9"
              style="height: 650px">
-            <img src="https://cdn1.ivivu.com/iVivu/2022/03/03/18/53114-furama-resort-da-nang-11-800x450.jpg" width="100%">
+            <img src="https://cdn1.ivivu.com/iVivu/2022/03/03/18/53114-furama-resort-da-nang-11-800x450.jpg"
+                 width="100%">
         </div>
     </div>
 </div>
@@ -181,7 +191,7 @@
 
 <!--footer-->
 <footer th:fragment="footer">
-    <div class="row">
+    <div class="row footer">
         <div class="col-lg-4 ">
             <div class="row">
                 <h3>How to Get to Us</h3>

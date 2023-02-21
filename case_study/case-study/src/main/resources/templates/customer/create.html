@@ -60,10 +60,10 @@
 <body>
 <header th:replace="/home::header"></header>
 <nav th:replace="/home::nav"></nav>
-<h2 class="center background">List Customer</h2>
+<h2 class="center background">Create Customer</h2>
 
 <div class="row background">
-    <div class="col-lg-5 col-sm-12">
+    <div class="col-lg-6 col-sm-12">
         <form method="post" th:action="@{/customer/save}" th:object="${customer}">
             <fieldset>
                 <table>
@@ -82,14 +82,14 @@
                         </td>
                     </tr>
                     <tr class="mb-3">
-                        <td> * Input New NAME :</td>
+                        <td> * Input New Name :</td>
                         <td>
                             <input class="form-control" type="text" th:field="*{name}"><br>
                         </td>
                     </tr>
 
                     <tr class="mb-3">
-                        <td> * Input New DATE OF BIRTH :</td>
+                        <td> * Input New Date Of Birt:</td>
                         <td>
                             <input class="form-control" type="text" th:field="*{dateOfBirt}"><br>
 
@@ -97,36 +97,36 @@
                     </tr>
 
                     <tr class="mb-3">
-                        <td> * Input New GENDER :</td>
+                        <td> * Input New Gender :</td>
                         <td>
                             <input type="radio" th:value="1" th:field="*{gender}">nam
-                            <input  type="radio" th:value="0" th:field="*{gender}">nữ<br>
+                            <input type="radio" th:value="0" th:field="*{gender}">nữ<br>
                         </td>
                     </tr>
 
                     <tr>
-                        <td * class="mb-3"> Input New ID CARD:</td>
+                        <td * class="mb-3"> Input New Id Card:</td>
                         <td>
                             <input class="form-control" type="text" th:field="*{idCard}"><br>
                         </td>
                     </tr>
 
                     <tr>
-                        <td * class="mb-3"> Input New PHONE NUMBER :</td>
+                        <td * class="mb-3"> Input New Phone Number :</td>
                         <td>
                             <input class="form-control" type="text" th:field="*{phoneNumber}"><br>
                         </td>
                     </tr>
 
                     <tr>
-                        <td * class="mb-3"> Input New EMAIL :</td>
+                        <td * class="mb-3"> Input New Email :</td>
                         <td>
                             <input class="form-control" type="text" th:field="*{email}"><br>
                         </td>
                     </tr>
 
                     <tr>
-                        <td * class="mb-3"> Input New ADDRESS :</td>
+                        <td * class="mb-3"> Input New Address :</td>
                         <td>
                             <input class="form-control" type="text" th:field="*{address}"><br>
                         </td>
@@ -153,6 +153,14 @@
                 </table>
             </fieldset>
         </form>
+    </div>
+    <div style="padding-top: 30px" class="col-lg-6 col-sm-12 ">
+        <div class="row">
+            <img src="https://www.vnbuyerguide.com/img_data/images/-FURAMA-RESORT-DANANG.jpg" width="100%">
+        </div>
+        <div class="row">
+            <img src="https://vac.vitravel.com.vn//Web/Resources/Uploaded/1/images/KhachSan/FuramaResortDaNang_vitravel_8.jpg" width="100%">
+        </div>
     </div>
 </div>
 

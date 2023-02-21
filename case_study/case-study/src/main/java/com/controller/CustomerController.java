@@ -30,6 +30,9 @@ public class CustomerController {
         Page<Customer> customerPage = customerService.findAll(name,email,customerTypeId,pageable);
         model.addAttribute("customerPage", customerPage);
         model.addAttribute("customerTypes", customerTypeService.findAll());
+        if (customerPage==null) {
+            model.addAttribute("mess","không có khách hàng nào");
+        }
         return "/customer/list";
     }
 

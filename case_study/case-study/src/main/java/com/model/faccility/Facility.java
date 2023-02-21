@@ -21,6 +21,7 @@ public class Facility {
     private String descriptionOtherConvenience;
     private double poolArea;
     private int numberOfFloors;
+    private String facilityFree;
     @ManyToOne
     @JoinColumn(name = "rent_type_id",nullable = false,referencedColumnName = "id")
     private RentType rentTypeId;
@@ -119,5 +120,21 @@ public class Facility {
 
     public void setFacilityTypeID(FacilityType facilityTypeID) {
         this.facilityTypeID = facilityTypeID;
+    }
+
+    public String getFacilityFree() {
+        return facilityFree;
+    }
+
+    public void setFacilityFree(String facilityFree) {
+        this.facilityFree = facilityFree;
+    }
+
+    public Set<Contract> getContractSet() {
+        return contractSet;
+    }
+
+    public void setContractSet(Set<Contract> contractSet) {
+        this.contractSet = contractSet;
     }
 }

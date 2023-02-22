@@ -9,7 +9,7 @@ import java.util.Set;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "int")
+    @Column(columnDefinition = "long")
     private long id;
     @Column(columnDefinition = "varchar(45)")
     private String name;

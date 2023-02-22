@@ -19,8 +19,11 @@ public class Facility {
     private String standardRoom;
     @Column(columnDefinition = "varchar(45)")
     private String descriptionOtherConvenience;
+    @Column(columnDefinition = "varchar(45)")
     private double poolArea;
+    @Column(columnDefinition = "varchar(45)")
     private int numberOfFloors;
+    @Column(columnDefinition = "varchar(45)")
     private String facilityFree;
     @ManyToOne
     @JoinColumn(name = "rent_type_id",nullable = false,referencedColumnName = "id")

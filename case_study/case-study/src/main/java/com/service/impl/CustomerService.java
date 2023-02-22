@@ -23,8 +23,14 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void save(Customer customer) {
+    public boolean save(Customer customer) {
+        for(Customer customer1:customerRepository.findAll()) {
+           if (customer1.getId()==customer.getId()) {
+               return false;
+           }
+        }
         customerRepository.save(customer);
+        return true;
     }
 
     @Override

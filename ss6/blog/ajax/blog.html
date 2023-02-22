@@ -48,7 +48,6 @@
     function showList() {
         let searchName = $('#searchName').val();
         let url = `http://localhost:8080/api/list?size=${size}&nameSearch=${searchName}`;
-
         $.ajax({
             type: "GET",
             dataType: "json",

@@ -11,15 +11,13 @@ import java.util.Set;
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column(columnDefinition = "date")
     private String starDate;
     @Column(columnDefinition = "date")
     private String endDate;
     private double deposit;
-    @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false, referencedColumnName = "id")
-    private Employee employeeID;
+
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false, referencedColumnName = "id")
     private Customer customerID;
@@ -38,7 +36,7 @@ public class Contract {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -66,13 +64,6 @@ public class Contract {
         this.deposit = deposit;
     }
 
-    public Employee getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setEmployeeID(Employee employeeID) {
-        this.employeeID = employeeID;
-    }
 
     public Customer getCustomerID() {
         return customerID;

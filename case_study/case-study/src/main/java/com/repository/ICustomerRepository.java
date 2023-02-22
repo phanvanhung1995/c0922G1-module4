@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
+
     @Query(value = "select * from Customer where name like concat('%',:name,'%') and email" +
             " like concat('%',:searchEmail,'%')" +
             " and customer_type like concat('%',:customerType,'%')", nativeQuery = true)

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Contract</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+        .center {
+            text-align: center;
+            padding: 20px;
+            font-size: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .img {
+            background-image: url("https://furamavietnam.com/wp-content/uploads/2018/07/Vietnam_Danang_Furama_Resort_Exterior_Courtyard.jpg ");
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .footer {
+            background-color: burlywood;
+        }
+
+        .content {
+            padding: 5px;
+        }
+
+        body {
+            margin: 0px 12px;
+        }
+
+        .background {
+            color: red;
+            font-size: 200%;
+            background-color: aquamarine;;
+            margin: 0px
+        }
+
+        .nav2 {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+        }
+
+        row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="/home::header"></header>
+<nav th:replace="/home::nav"></nav>
+
+<h2 class="center background">List Customer</h2>
+<p>
+    <button style="float: left" type="button" class="btn btn-primary btn-lg"><a th:href="@{/contract/create}"
+                                                                                style="color: white"
+    >Create
+        New Contract</a></button>
+</p>
+
+<table style="text-align: center" class="table table-striped">
+
+    <tr>
+        <th>ID</th>
+        <th>FACILITY</th>
+        <th>CUSTOMER</th>
+        <th>STAR DATE</th>
+        <th>END DATE</th>
+        <th>DEPOSIT</th>
+        <th>TOTAL</th>
+        <th colspan="2"> ATTACH FACILITY</th>
+    </tr>
+    <tr th:each="contracts:${contractList}">
+        <td id="idContract" th:text="*{contracts.contractId}"></td>
+        <td th:text="*{contracts.facilityName}"></td>
+        <td th:text="*{contracts.customerName}"></td>
+        <td th:text="*{contracts.starDate}"></td>
+        <td th:text="*{contracts.endDate}"></td>
+        <td th:text="*{contracts.deposit}"></td>
+        <td th:text="*{contracts.total}"></td>
+        <td>
+            <button type="button">+</button>
+        </td>
+        <td>
+            <button onclick="showlist(idContract)" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Danh Sách
+                Dịch Vụ Đi Kèm
+            </button>
+        </td>
+    </tr>
+
+</table>
+
+<!--phân trang-->
+<div>
+    <a th:href="@{/contract/(page=${contractList.number - 1})}"
+       th:if="${contractList.hasPrevious()}">Trước</a>
+    <span th:text="${contractList.number + 1 }">/<span th:text="${contractList.totalPages}"></span></span>
+    <a th:href="@{/contract/(page=${contractList.number + 1})}" th:if="${contractList.hasNext()}">sau</a>
+</div>
+
+
+<!--modal danh sách dịch vụ đi kèm-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <th>Contract Id</th>
+                        <th>Name</th>
+                        <th>Cost</th>
+                        <th>Unit</th>
+                        <th>Status</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tbody id="showList"></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+<script>
+
+    function showlist(idContract) {
+       alert(idContract)
+            $.ajax({
+                type: "GET",
+                dataType: "JSON",
+                url: "http://localhost:8080/api/contract?id=" + idContract,
+                success: function (data) {
+                    alert(idContract)
+                    let row = '';
+                    for (let i = 0; i < data.length; i++) {
+                        row += `<tr>`
+                        row += `<td>${data[i].contractId}</td>`
+                        row += `<td>${data[i].name}</td>`
+                        row += `<td>${data[i].cost}</td>`
+                        row += `<td>${data[i].unit}</td>`
+                        row += `<td>${data[i].status}</td>`
+                        row += `<td>${data[i].quantity}</td>`
+                        row += `</tr>`
+                    }
+                    $('#showList').html(row);
+                }
+            })
+    }
+</script>
+</html>

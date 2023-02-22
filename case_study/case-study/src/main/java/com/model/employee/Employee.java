@@ -35,8 +35,6 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "division", nullable = false, referencedColumnName = "id")
     private Division division;
-    @OneToMany(mappedBy = "employeeID")
-   private Set<Contract> contractSet;
 
     @OneToOne
     @JoinColumn(name = "username", referencedColumnName = "userName")
@@ -133,13 +131,6 @@ public class Employee {
         this.division = division;
     }
 
-    public Set<Contract> getContractSet() {
-        return contractSet;
-    }
-
-    public void setContractSet(Set<Contract> contractSet) {
-        this.contractSet = contractSet;
-    }
 
     public User getUser() {
         return user;

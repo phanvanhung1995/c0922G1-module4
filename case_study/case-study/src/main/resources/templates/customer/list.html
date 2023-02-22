@@ -78,31 +78,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/customer/">Customer</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Service
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link " href="/contract/">Contract</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Contract</a>
+                    <a class="nav-link " href="/facility/">Facility</a>
                 </li>
             </ul>
             <form class="d-flex" role="search" style="padding-top: 8px"  method="get">
-                <input name="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <input name="email" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <select name="customerTypeId">
-                    <option value="">type</option>
-                    <option th:each="customers:${customerTypes}" th:value="${customers.id}"
-                            th:text="${customers.name}"></option>
+                <input name="name" class="form-control me-2" type="search" placeholder="name search" aria-label="Search">
+                <input name="email" class="form-control me-2" type="search" placeholder="email search" aria-label="Search">
+                <select class="form-control me-2" name="customerTypeId" >
+                    <option value="">type customer search</option>
+                    <option th:each="customerSearch:${customerTypes}" th:value="${customerSearch.id}"
+                            th:text="${customerSearch.name}"></option>
                 </select>
                 <button class="btn btn-outline-danger" type="submit">Search</button>
             </form>
@@ -123,8 +112,8 @@
 <p></p>
 <p style="color:red;" th:text="${mess}"></p>
 
-<table class="table table-striped">
-    <tr style="text-align: center">
+<table style="text-align: center" class="table table-striped">
+    <tr >
         <th>ID</th>
         <th>NAME</th>
         <th>DATE OF BIRTH</th>

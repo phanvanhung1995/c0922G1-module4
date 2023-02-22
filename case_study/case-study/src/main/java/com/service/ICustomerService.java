@@ -11,7 +11,7 @@ public interface ICustomerService {
 
     Customer findById(Long id);
 
-    void save(Customer customer);
+    boolean save(Customer customer);
 
     void delete(Long id);
 

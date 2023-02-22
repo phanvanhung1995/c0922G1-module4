@@ -28,6 +28,9 @@ public class CustomerController {
                                @RequestParam( defaultValue = "",required = false) String customerTypeId,
                                Model model, @PageableDefault(size = 5, page = 0) Pageable pageable) {
         Page<Customer> customerPage = customerService.findAll(name,email,customerTypeId,pageable);
+        model.addAttribute("name",name);
+        model.addAttribute("email",email);
+        model.addAttribute("customerTypeId",customerTypeId);
         model.addAttribute("customerPage", customerPage);
         model.addAttribute("customerTypes", customerTypeService.findAll());
         if (customerPage==null) {
@@ -45,9 +48,15 @@ public class CustomerController {
 
     @PostMapping("/save")
     public String create(@ModelAttribute Customer customer, RedirectAttributes redirect) {
-        customerService.save(customer);
-        redirect.addFlashAttribute("mess", "thêm mới thành công");
-        return "redirect:/customer/";
+       boolean check = customerService.save(customer);
+       if (check) {
+           redirect.addFlashAttribute("mess", "thêm mới thành công");
+           return "redirect:/customer/";
+       } else {
+           redirect.addFlashAttribute("mess", "id đã tồn tại");
+           return "/customer/create";
+       }
+
     }
 
     @GetMapping("/edit/{id}")

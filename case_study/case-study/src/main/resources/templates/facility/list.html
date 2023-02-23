@@ -87,7 +87,7 @@
             </ul>
             <form class="d-flex" role="search" style="padding-top: 8px" method="get">
                 <input name="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <select name="facilityTypeId">
+                <select class="form-control me-2"  name="facilityTypeId">
                     <option value="">facility Type</option>
                     <option th:each="facilitys:${facilityType}" th:value="${facilitys.id}"
                             th:text="${facilitys.name}"></option>

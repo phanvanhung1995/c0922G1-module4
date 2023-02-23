@@ -21,7 +21,6 @@ public class Customer {
     @Column(columnDefinition = "varchar(45) unique")
     private String phoneNumber;
     @Column(columnDefinition = "varchar(45) unique")
-
     private String email;
     @Column(columnDefinition = "varchar(45)")
     private String address;

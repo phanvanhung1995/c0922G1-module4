@@ -61,7 +61,7 @@
 <header th:replace="/home::header"></header>
 <nav th:replace="/home::nav"></nav>
 
-<h2 class="center background">List Customer</h2>
+<h2 class="center background">List Contract</h2>
 <p>
     <button style="float: left" type="button" class="btn btn-primary btn-lg"><a th:href="@{/contract/create}"
                                                                                 style="color: white"
@@ -93,7 +93,7 @@
             <button type="button">+</button>
         </td>
         <td>
-            <button onclick="showlist(idContract)" type="button" data-bs-toggle="modal"
+            <button th:attr="onclick=|getIdContract('${contracts.contractId}')|" type="button" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Danh Sách
                 Dịch Vụ Đi Kèm
             </button>
@@ -116,17 +116,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Danh Sách Dịch Vụ Đi Kèm</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table>
+                <table style="text-align: center" class="table table-striped">
                     <tr>
-                        <th>Contract Id</th>
                         <th>Name</th>
                         <th>Cost</th>
                         <th>Unit</th>
-                        <th>Status</th>
                         <th>Quantity</th>
                     </tr>
                     <tbody id="showList"></tbody>
@@ -142,30 +140,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
+<script src="/jquery-3.6.3.min.js"></script>
 <script>
 
-    function showlist(idContract) {
-       alert(idContract)
-            $.ajax({
-                type: "GET",
-                dataType: "JSON",
-                url: "http://localhost:8080/api/contract?id=" + idContract,
-                success: function (data) {
-                    alert(idContract)
-                    let row = '';
-                    for (let i = 0; i < data.length; i++) {
-                        row += `<tr>`
-                        row += `<td>${data[i].contractId}</td>`
-                        row += `<td>${data[i].name}</td>`
-                        row += `<td>${data[i].cost}</td>`
-                        row += `<td>${data[i].unit}</td>`
-                        row += `<td>${data[i].status}</td>`
-                        row += `<td>${data[i].quantity}</td>`
-                        row += `</tr>`
-                    }
-                    $('#showList').html(row);
+    function getIdContract(idContract) {
+        let url = `http://localhost:8080/api/contract/${idContract}`;
+        $.ajax({
+            type: "GET",
+            dataType: "JSON",
+            url: url,
+            success: function (data) {
+                let row = '';
+                for (let i = 0; i < data.length; i++) {
+                    row += `<tr>`
+                    row += `<td>${data[i].name}</td>`
+                    row += `<td>${data[i].cost}</td>`
+                    row += `<td>${data[i].unit}</td>`
+                    row += `<td>${data[i].quantity}</td>`
+                    row += `</tr>`
                 }
-            })
+                $('#showList').html(row);
+            }
+        })
     }
 </script>
 </html>

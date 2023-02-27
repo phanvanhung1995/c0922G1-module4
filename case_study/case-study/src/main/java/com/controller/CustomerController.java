@@ -2,14 +2,18 @@ package com.controller;
 
 import com.model.customer.Customer;
 import com.model.customer.CustomerType;
+import com.model.dto.CustomerDto;
 import com.service.impl.CustomerService;
 import com.service.impl.CustomerTypeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -25,37 +29,43 @@ public class CustomerController {
 
     @GetMapping("/")
     public String showCustomer(@RequestParam(defaultValue = "", required = false) String name, @RequestParam(defaultValue = "", required = false) String email,
-                               @RequestParam( defaultValue = "",required = false) String customerTypeId,
+                               @RequestParam(defaultValue = "", required = false) String customerTypeId,
                                Model model, @PageableDefault(size = 5, page = 0) Pageable pageable) {
-        Page<Customer> customerPage = customerService.findAll(name,email,customerTypeId,pageable);
-        model.addAttribute("name",name);
-        model.addAttribute("email",email);
-        model.addAttribute("customerTypeId",customerTypeId);
+        Page<Customer> customerPage = customerService.findAll(name, email, customerTypeId, pageable);
+        model.addAttribute("name", name);
+        model.addAttribute("email", email);
+        model.addAttribute("customerTypeId", customerTypeId);
         model.addAttribute("customerPage", customerPage);
         model.addAttribute("customerTypes", customerTypeService.findAll());
-        if (customerPage==null) {
-            model.addAttribute("mess","không có khách hàng nào");
+        if (customerPage == null) {
+            model.addAttribute("mess", "không có khách hàng nào");
         }
         return "/customer/list";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("customer", new Customer());
+        model.addAttribute("customerDto", new CustomerDto());
         model.addAttribute("customerTypes", customerTypeService.findAll());
         return "customer/create";
     }
 
     @PostMapping("/save")
-    public String create(@ModelAttribute Customer customer, RedirectAttributes redirect) {
-       boolean check = customerService.save(customer);
-       if (check) {
-           redirect.addFlashAttribute("mess", "thêm mới thành công");
-           return "redirect:/customer/";
-       } else {
-           redirect.addFlashAttribute("mess", "id đã tồn tại");
-           return "/customer/create";
-       }
+    public String create(@Validated @ModelAttribute CustomerDto customerDto, Model model, BindingResult bindingResult, RedirectAttributes redirect) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("CustomerDto", customerDto);
+            return "/create";
+        }
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDto, customer);
+        boolean check = customerService.save(customer);
+        if (check) {
+            redirect.addFlashAttribute("mess", "thêm mới thành công");
+            return "redirect:/customer/";
+        } else {
+            redirect.addFlashAttribute("mess", "id đã tồn tại");
+            return "/customer/create";
+        }
 
     }
 

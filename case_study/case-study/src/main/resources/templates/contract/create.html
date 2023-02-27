@@ -63,75 +63,33 @@
 
 <h2 class="center background">Create Contract</h2>
 
-<!--<form  method="post" th:action="@{/contract/save}" th:object="${contract}">-->
-<!--    <fieldset disabled>-->
-<!--        <legend>Disabled fieldset example</legend>-->
-<!--        <input th:field="*{id}" hidden>-->
-
-<!--        <label class="form-control form-control-lg" type="text" aria-label=".form-control-lg example">Ngày Bắt Đầu :-->
-<!--            <input type="date" th:field="*{starDate}">-->
-<!--        </label><br>-->
-
-<!--        <label class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"> Ngày Kết Thúc :-->
-<!--            <input type="date" th:field="*{endDate}">-->
-<!--        </label><br>-->
-
-<!--        <label class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"> Tiền Đặt Cọc :-->
-<!--            <input type="text" th:field="*{deposit}">-->
-<!--        </label><br>-->
-
-<!--        <label class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"> tổng tiền :-->
-<!--            <input>-->
-<!--        </label><br>-->
-
-<!--        <label class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"> Khách hàng thuê-->
-<!--            dịch vụ :-->
-<!--            <input th:field="*{customerID.name}">-->
-<!--        </label><br>-->
-
-<!--        <label class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"> chọn dịch vụ :-->
-<!--            <select th:field="*{facilityID}">-->
-<!--                <option th:each="facilitys:${facility}" th:value="${facilitys.id}" th:text="${facilitys.name}"></option>-->
-<!--            </select>-->
-<!--        </label><br>-->
-
-<!--        <label class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"> Dịch Vụ Đính Kèm-->
-<!--            :-->
-<!--            <button type="button">+</button>-->
-<!--        </label><br>-->
-
-<!--        <button class="btn btn-primary btn-lg">Hủy Bỏ</button>-->
-<!--        <button class="btn btn-primary btn-lg">Tạo Hợp Đồng</button>-->
-<!--    </fieldset>-->
-<!--</form>-->
-
 <form style="text-align: center" method="post" th:action="@{/contract/save}" th:object="${contract}">
-    <fieldset >
+    <fieldset>
         <legend>Form Create Contract</legend>
         <input th:field="*{id}" hidden>
         <div class="mb-3">
-            <label  class="form-label">Ngày Bắt Đầu :</label>
-            <input  th:field="*{starDate}" type="date"  class="form-control"
+            <label class="form-label">Ngày Bắt Đầu :</label>
+            <input th:field="*{starDate}" type="date" class="form-control"
                    placeholder="input">
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">Ngày Kết Thúc :</label>
-            <input type="date" th:field="*{endDate}"  class="form-control" placeholder="input">
+            <label class="form-label">Ngày Kết Thúc :</label>
+            <input type="date" th:field="*{endDate}" class="form-control" placeholder="input">
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">Tiền Đặt Cọc :</label>
-            <input type="text" th:field="*{deposit}"  class="form-control" placeholder="Disabled input">
+            <label class="form-label">Tiền Đặt Cọc :</label>
+            <input type="text" th:field="*{deposit}" class="form-control" placeholder="Disabled input">
         </div>
 
         <div class="mb-3">
-            <label  class="form-label"> tổng tiền :</label>
-            <input  th:field="*{starDate}" type="text" class="form-control" placeholder="Disabled input">
+            <label class="form-label"> tổng tiền :</label>
+            <input th:field="*{starDate}" type="text" class="form-control" placeholder="Disabled input">
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">Khách hàng thuê dịch vụ : </label>
+            <label class="form-label">Khách hàng thuê dịch vụ : </label>
             <input th:field="*{customerID.name}" type="text" class="form-control" placeholder="Disabled input">
         </div>
 
@@ -143,12 +101,54 @@
         </div>
         <label class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"> Dịch Vụ Đính
             Kèm :
-            <button type="button">+</button>
+            <button type="button" class="btn btn-primary" onclick="addAttach()" data-bs-toggle="modal"
+                    data-bs-target="#addDetail">+
+            </button>
         </label><br>
 
         <button class="btn btn-primary btn-lg"><a style="color: white" href="/contract/create">Hủy Bỏ</a></button>
         <button type="submit" class="btn btn-primary btn-lg">Tạo Hợp Đồng</button>
     </fieldset>
 </form>
+
+<!--modal dịch thêm dịch vụ đi kèm-->
+
+<div class="modal" tabindex="-1" id="addDetail">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm dịch vụ đi kèm <i class="fa-sharp fa-solid fa-user"></i></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:object="${contractDetailDto}" th:action="@{/contract/addAttachFacility}" method="post">
+                    <div></div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Dịch Vụ</label>
+                        <div class="col-sm-10">
+                            <select th:field="*{attachFacility}" id="attachFacilityAdd" class="form-control">
+                                <option th:each="facility : ${attachFacility}" th:text="${facility.name}"
+                                        th:value="${facility.id}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Số Lượng</label>
+                        <input type="hidden" th:field="*{contract}" id="contractIdAdd">
+                        <div class="col-sm-10">
+                            <input type="number" id="quantityAdd" class="form-control" th:field="*{quantity}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<script>
+</script>
 </html>

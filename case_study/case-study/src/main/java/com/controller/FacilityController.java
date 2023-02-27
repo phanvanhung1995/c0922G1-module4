@@ -1,15 +1,19 @@
 package com.controller;
 
+import com.model.dto.FacilityDto;
 import com.model.faccility.Facility;
 import com.service.impl.FacilityService;
 import com.service.impl.FacilityTypeService;
 import com.service.impl.RentTypeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -43,7 +47,13 @@ public class FacilityController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Facility facility, RedirectAttributes redirect) {
+    public String save(@Validated @ModelAttribute FacilityDto facilityDto, Model model, BindingResult bindingResult, RedirectAttributes redirect) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("facilityDto",new FacilityDto());
+            return "/facility/create";
+        }
+        Facility facility =new Facility();
+        BeanUtils.copyProperties(facilityDto,facility);
         facilityService.save(facility);
         redirect.addFlashAttribute("mess", "thêm mới thành công");
         return "redirect:/facility/";

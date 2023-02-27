@@ -66,6 +66,8 @@
     <button style="float: left" type="button" class="btn btn-primary btn-lg"><a th:href="@{/contract/create}"
                                                                                 style="color: white"
     >Create
+
+
         New Contract</a></button>
 </p>
 
@@ -90,10 +92,10 @@
         <td th:text="*{contracts.deposit}"></td>
         <td th:text="*{contracts.total}"></td>
         <td>
-            <button type="button">+</button>
-        </td>
-        <td>
-            <button th:attr="onclick=|getIdContract('${contracts.contractId}')|" type="button" data-bs-toggle="modal"
+            <button class="btn btn-primary"  th:attr="onclick=|addContractFacility('${contracts.contractId}')|" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal1" type="button">+
+            </button>
+            <button class="btn btn-primary"  th:attr="onclick=|getIdContract('${contracts.contractId}')|" type="button" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Danh Sách
                 Dịch Vụ Đi Kèm
             </button>
@@ -136,12 +138,58 @@
         </div>
     </div>
 </div>
+
+
+<!--modal + -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel1">Thêm mới dịch vụ đi kèm : </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/contract/add}" th:object="${contractDetail}" method="post">
+                <div class="modal-body">
+
+                    <table style="text-align: center" class="table table-striped">
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input hidden id="contractId" th:field="*{contract}">
+                            </td>
+                            <td>
+                                <label>Chọn dịch vụ đi kèm : </label>
+                                <select class="form-control" th:field="*{attachFacility}">
+                                    <option th:each="attachFacility:${attachFacilities}" th:value="${attachFacility.id}"
+                                            th:text="${attachFacility.name}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <label>Nhập số lượng : </label>
+                                <input th:field="*{quantity}" class="form-control">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 <script src="/jquery-3.6.3.min.js"></script>
 <script>
+
 
     function getIdContract(idContract) {
         let url = `http://localhost:8080/api/contract/${idContract}`;
@@ -162,6 +210,12 @@
                 $('#showList').html(row);
             }
         })
+    }
+
+    function addContractFacility(id) {
+        debugger
+        document.getElementById('contractId').value = id;
+
     }
 </script>
 </html>

@@ -62,7 +62,7 @@
 <nav th:replace="/home::nav"></nav>
 <h2 class="center background">Create Facility</h2>
 
-<form th:action="@{/facility/save}" th:object="${facility}" method="post">
+<form th:action="@{/facility/save}" th:object="${facilityDto}" method="post">
     <input th:field="*{id}" hidden>
     <label>Input new Facility type
         <select onchange="addVilla(this.value)" class="form-control form-control-lg" type="text"
